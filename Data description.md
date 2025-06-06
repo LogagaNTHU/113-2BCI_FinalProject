@@ -1,4 +1,5 @@
-I. DataData Description
+DataData Description
+
 The dataset used in this study is from the COG‐BCI database (Zenodo DOI: 10.5281/zenodo.7413650), released by the COG‐BCI team. The original EEG recordings are stored in EEGLAB .set/.fdt format following a BIDS‐compliant directory structure (e.g., sub-01/ses-S1/zeroBack.set, oneBack.set, twoBack.set). Behavioral data (reaction times, accuracy) and questionnaire responses (RSME, KSS) are included alongside the EEG/ECG files. The dataset consists of 29 healthy adult participants (sub-01 through sub-29), each undergoing three sessions (ses-S1, ses-S2, ses-S3). In each session, participants performed three working-memory load conditions: 0-back, 1-back, and 2-back.
 
 Experimental Design / Data Collection Procedure: A custom Python script presented sequences of digits (0–9) on a screen in random order. Participants judged whether the current stimulus matched the one presented N trials before (N = 0, 1, or 2). Each condition consisted of several blocks (~50 trials per block). Every stimulus was marked with an event code, and EEG/ECG data were recorded simultaneously. Stimulus–response synchronization was handled by LabStreamingLayer.
