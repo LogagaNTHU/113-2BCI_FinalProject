@@ -12,7 +12,9 @@ Data Size: Each recording file contains approximately 200,000 time points at a 5
 
 Source: Zenodo (https://zenodo.org/records/7413650), publicly available under the COG‐BCI team release.
 
-Quality Evaluation (8 points)We performed Independent Component Analysis (extended-infomax) combined with ICLabel classification on three preprocessing stages—raw, 1–40 Hz band‐pass filtered, and 1–40 Hz + artifact correction—to assess the reliability and credibility of the EEG data. The table below summarizes results for one example file (sub-01/ses-S1/zeroBack) with 30 independent components (ICs) extracted by ICA under each preprocessing condition:
+Quality Evaluation
+-
+We performed Independent Component Analysis (extended-infomax) combined with ICLabel classification on three preprocessing stages—raw, 1–40 Hz band‐pass filtered, and 1–40 Hz + artifact correction—to assess the reliability and credibility of the EEG data. The table below summarizes results for one example file (sub-01/ses-S1/zeroBack) with 30 independent components (ICs) extracted by ICA under each preprocessing condition:
 
 Preprocessing
 
