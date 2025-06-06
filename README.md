@@ -3,6 +3,8 @@ AI use Disclose: The content of this report (including fragments and text compil
 ## Introduction
 Load Theory (Lavie, 2005) states that cognitive load affects perceptual processing and attention control strategies. The N-back task is widely used to simulate different working memory load conditions. Previous studies have shown that under high-load conditions (such as 2-back), compared with low-load conditions (such as 1-back), the subjects' frontal midline theta power increased significantly, while the amplitude of the P300 ERP component decreased (Cohen, 2014; Polich, 2007). These EEG indicators can be used as a basis for constructing classification models and predicting the user's cognitive state.
 
+![Demovideo](https://youtu.be/gtSRlEtLCOg)
+
 ## Data Description
 
 The dataset used in this study is from the **COG-BCI database** (Zenodo DOI: 10.5281/zenodo.7413650), released by the COG-BCI team. The original EEG recordings are stored in EEGLAB `.set/.fdt` format following a BIDS-compliant directory structure (e.g., `sub-01/ses-S1/zeroBack.set`, `oneBack.set`, `twoBack.set`). Behavioral data (reaction times, accuracy) and questionnaire responses (RSME, KSS) are included alongside the EEG/ECG files. The dataset consists of **29 healthy adult participants** (`sub-01` through `sub-29`), each undergoing **three sessions** (`ses-S1`, `ses-S2`, `ses-S3`). In each session, participants performed three working-memory load conditions: **0-back**, **1-back**, and **2-back**.
@@ -41,7 +43,6 @@ We performed **Independent Component Analysis (extended-infomax)** combined with
 ---
 
 ## Model Framework
-
 **Overview**: We implemented a four-stage pipeline for detecting working-memory load from EEG:
 
 1. **Preprocessing**: Raw → ICA+ICLabel → Clean → Band-pass → Epoch
