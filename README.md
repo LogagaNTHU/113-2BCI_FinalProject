@@ -316,3 +316,13 @@ This pattern indicates that the model is better at identifying high load (2-back
 
 These findings confirm that **P300 amplitude** is a robust index of working‐memory load, whereas **theta power** did not reliably differentiate among 0/1/2-back in this dataset. The modest classification accuracy underscores the need for additional features or more advanced algorithms to improve between‐load discrimination.
 
+## References
+
+Lavie, N. (2005). Distracted and confused?: Selective attention under load.
+ Trends in Cognitive Sciences, 9(2), 75–82. https://doi.org/10.1016/j.tics.2004.12.004
+
+Cohen, M. X. (2014). Analyzing Neural Time Series Data: Theory and Practice (1st ed.).
+ MIT Press.
+
+Polich, J. (2007). Updating P300: An integrative theory of P3a and P3b.
+ Clinical Neurophysiology, 118(10), 2128–2148. https://doi.org/10.1016/j.clinph.2007.04.019
