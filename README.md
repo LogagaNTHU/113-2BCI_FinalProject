@@ -1,5 +1,5 @@
 # 113-2｜BCI Project: EEG-based Working Memory Load Detection
-
+AI use Disclose: The content of this report (including fragments and text compilation) was partially generated and translated by AI (ChatGPT). All final results, analysis steps and method decisions are confirmed and responsible by the author.
 ## Introduction
 Load Theory (Lavie, 2005) states that cognitive load affects perceptual processing and attention control strategies. The N-back task is widely used to simulate different working memory load conditions. Previous studies have shown that under high-load conditions (such as 2-back), compared with low-load conditions (such as 1-back), the subjects' frontal midline theta power increased significantly, while the amplitude of the P300 ERP component decreased (Cohen, 2014; Polich, 2007). These EEG indicators can be used as a basis for constructing classification models and predicting the user's cognitive state.
 
