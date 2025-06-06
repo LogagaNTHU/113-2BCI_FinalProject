@@ -194,3 +194,125 @@ Plots:
 5. **View Results**:
 
    * Check `results/` for CSV summaries and `figures/` for plots (ERP overlay, theta barplot, ICLabel comparison, confusion matrix).
+
+
+## Results
+
+### 1. ERP (P300) Findings
+
+Figure 1 shows the grand‐average ERP waveforms at **Pz** for the three load conditions (0-back, 1-back, 2-back). The shaded region (300–500 ms) marks the P300 window used for amplitude measurement. Qualitatively, you can see that as memory load increases, the P300 voltage peak in this window becomes smaller (green < orange < blue).
+
+![](figures/erp_overlay.png)
+
+**Figure 1.** Grand‐average ERP at Pz for 0-back (blue), 1-back (orange), and 2-back (green). The gray shaded region (300–500 ms) indicates the P300 measurement window.
+
+#### P300 Repeated‐Measures ANOVA
+
+A repeated‐measures ANOVA was conducted on each subject’s mean P300 amplitude across the three load conditions. Statistics (using Pingouin) were as follows:
+
+```
+Source   SS             DF   MS             F        p-unc    η²ₚ    ε
+load   2.3593e-12       2  1.1796e-12     9.8819   0.00035   0.0923  0.7554
+Error  4.5361e-12      38  1.1937e-13       —        —        —       —
+```
+
+* **F(2, 38) = 9.882, p = 0.00035, η²ₚ = 0.0923**
+  This indicates a highly significant main effect of load on P300 amplitude.
+
+#### P300 Pairwise Comparisons (Bonferroni)
+
+Post-hoc paired t-tests (Bonferroni‐corrected) were performed between each pair of load conditions:
+
+| Comparison |    t    |  p-unc | p-corr | Cohen’s d |
+| :--------: | :-----: | :----: | :----: | :-------: |
+|   0 vs 1   | –1.1465 | 0.2658 | 0.7974 |   –0.26   |
+|   0 vs 2   |  2.8015 | 0.0114 | 0.0342 |    0.63   |
+|   1 vs 2   |  4.0782 | 0.0006 | 0.0019 |    0.91   |
+
+* **0 vs 2-back**: t(19) = 2.8015, p\_unc = 0.0114, p\_corr = 0.0342 (p < 0.05), Cohen’s d = 0.63
+* **1 vs 2-back**: t(19) = 4.0782, p\_unc = 0.0006, p\_corr = 0.0019 (p < 0.01), Cohen’s d = 0.91
+* **0 vs 1-back**: not significant (p\_corr = 0.7974)
+
+Thus, P300 amplitude in 2-back is significantly lower than in both 0- and 1-back, while 0-back vs 1-back shows no reliable difference.
+
+---
+
+### 2. Theta Power Findings
+
+Figure 2 shows the mean theta (4–7 Hz) power (µV²) averaged across channels Fz, FCz, and Pz for each load condition. Although there is a slight visual trend (1-back > 2-back > 0-back), no statistical difference was found.
+
+![](figures/theta_barplot.png)
+
+**Figure 2.** Mean theta power (4–7 Hz) by load (0-back, 1-back, 2-back). Error bars represent ±1 SEM.
+
+#### Theta Repeated‐Measures ANOVA
+
+A repeated‐measures ANOVA on each subject’s mean theta power yielded:
+
+```
+Source   SS                DF   MS             F       p-unc    η²ₚ    ε
+load   2.7558e-26          2  1.3779e-26    0.2908  0.7493   0.0014  0.8380
+Error  1.8008e-24         38  4.7389e-26       —       —        —       —
+```
+
+* **F(2, 38) = 0.2908, p = 0.7493, η²ₚ = 0.0014**
+  This indicates no significant main effect of load on theta power.
+
+#### Theta Pairwise Comparisons (Bonferroni)
+
+Post-hoc paired t-tests (Bonferroni‐corrected):
+
+| Comparison |    t    |  p-unc | p-corr |
+| :--------: | :-----: | :----: | :----: |
+|   0 vs 1   | –0.9303 | 0.3639 | 1.0000 |
+|   0 vs 2   | –0.2578 | 0.7993 | 1.0000 |
+|   1 vs 2   |  0.4700 | 0.6437 | 1.0000 |
+
+All comparisons are non-significant (p\_corr = 1.0).
+
+---
+
+### 3. Classification Results
+
+Table 1 summarizes the 10-fold cross-validated performance for **LDA** and **SVM (linear kernel)**, using each subject’s mean P300 and theta features (one row per load condition per subject).
+
+| Model | Accuracy (mean ± SD) | Weighted F1 (mean ± SD) |
+| :---: | :------------------: | :---------------------: |
+|  LDA  |    0.3667 ± 0.1795   |     0.2946 ± 0.1631     |
+|  SVM  |    0.3667 ± 0.1795   |     0.2857 ± 0.1594     |
+
+**Table 1.** 10-fold stratified CV classification performance (3-class: 0/1/2-back).
+
+* Both LDA and SVM achieve a mean accuracy of **36.7 %** (±17.95 %) and a weighted F1 of \~0.29.
+* The relatively low accuracy reflects the challenge of discriminating three load levels across subjects using only two features (P300, theta power).
+
+Figure 3 shows the confusion matrix for **LDA** predictions (aggregated over all folds). The true class labels (rows) vs. predicted labels (columns) are coded as 0 = 0-back, 1 = 1-back, 2 = 2-back.
+
+![](figures/confusion_matrix.png)
+
+**Figure 3.** LDA confusion matrix (aggregated over all 10 folds).
+
+* 0-back trials (row 0) were most often misclassified as 1-back (11/20) or 2-back (9/20).
+* 1-back trials (row 1) were split: 8 correctly labeled, but 5 labeled as 0-back and 7 as 2-back.
+* 2-back trials (row 2) achieved the highest correct rate (14/20), with a few mislabeled as 0-back (3/20) or 1-back (3/20).
+
+This pattern indicates that the model is better at identifying high load (2-back) but struggles to separate low vs. moderate load (0- vs 1-back), consistent with the overlapping feature distributions.
+
+---
+
+**Summary of Results**
+
+1. **ERP (P300)**
+
+   * Significant decrease in P300 amplitude as load increases, especially between 2-back and both 0-back/1-back.
+   * No significant difference between 0-back and 1-back.
+2. **Theta Power**
+
+   * No significant change across load conditions.
+3. **Classification**
+
+   * Using P300 + theta, LDA and SVM achieve \~36.7 % accuracy for three-class cross-subject CV.
+   * Confusion matrix shows best performance at identifying 2-back, with frequent confusion between 0- and 1-back.
+
+These findings confirm that **P300 amplitude** is a robust index of working‐memory load, whereas **theta power** did not reliably differentiate among 0/1/2-back in this dataset. The modest classification accuracy underscores the need for additional features or more advanced algorithms to improve between‐load discrimination.
+
