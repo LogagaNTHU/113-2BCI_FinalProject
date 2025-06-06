@@ -3,7 +3,7 @@ AI use Disclose: The content of this report (including fragments and text compil
 ## Introduction
 Load Theory (Lavie, 2005) states that cognitive load affects perceptual processing and attention control strategies. The N-back task is widely used to simulate different working memory load conditions. Previous studies have shown that under high-load conditions (such as 2-back), compared with low-load conditions (such as 1-back), the subjects' frontal midline theta power increased significantly, while the amplitude of the P300 ERP component decreased (Cohen, 2014; Polich, 2007). These EEG indicators can be used as a basis for constructing classification models and predicting the user's cognitive state.
 
-![Demovideo](https://youtu.be/gtSRlEtLCOg)
+[![Demo Video](https://img.youtube.com/vi/gtSRlEtLCOg/0.jpg)](https://www.youtube.com/watch?v=gtSRlEtLCOg)
 
 ## Data Description
 
