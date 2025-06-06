@@ -1,4 +1,4 @@
-DataData Description
+Data Description
 -
 The dataset used in this study is from the COG‐BCI database (Zenodo DOI: 10.5281/zenodo.7413650), released by the COG‐BCI team. The original EEG recordings are stored in EEGLAB .set/.fdt format following a BIDS‐compliant directory structure (e.g., sub-01/ses-S1/zeroBack.set, oneBack.set, twoBack.set). Behavioral data (reaction times, accuracy) and questionnaire responses (RSME, KSS) are included alongside the EEG/ECG files. The dataset consists of 29 healthy adult participants (sub-01 through sub-29), each undergoing three sessions (ses-S1, ses-S2, ses-S3). In each session, participants performed three working-memory load conditions: 0-back, 1-back, and 2-back.
 
@@ -22,19 +22,11 @@ ICLabel Classification Counts
 
 
 
-Brain | Muscle Artifact | Channel Noise | Other
-
-Raw (no filtering)
-
-1   |        0         |       0       |   24
-
-Band-pass (1–40 Hz)
-
-12   |        0         |       0       |    6
-
-Band-pass + Artifact Correction (AutoReject)
-
-4   |       11         |       1       |    2
+| Pre-processing Stage                       | Band-pass | ASR | Brain | Muscle Artifact | Eye | Heart | Line | Channel Noise | Other |
+|--------------------------------------------|:---------:|:---:|:-----:|:---------------:|:---:|:-----:|:----:|:-------------:|:-----:|
+| **Raw** (no filtering)                     |           |     |   1   |        0        |  0  |   0   |  0   |       0       |  24   |
+| **Filtered (1–40 Hz)**                     |     ✓     |     |  12   |        0        |  0  |   0   |  0   |       0       |   6   |
+| **Band-pass + Artifact Correction (ASR)**  |     ✓     |  ✓  |   4   |       11        |  1  |   0   |  0   |       1       |   2   |
 
 Raw Stage: ICA extracted 30 ICs, but ICLabel identified only 1 as “brain source” and 24 as “other,” indicating extremely low signal‐to‐noise ratio without filtering, so most components could not be classified.
 
